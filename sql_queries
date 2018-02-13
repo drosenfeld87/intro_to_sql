@@ -1,27 +1,25 @@
 SQL Queries
 
-1. SELECT * FROM robots WHERE source = "Star Wars";
+1. SELECT * FROM robots WHERE source = 'Star Wars';
 
-2. SELECT * FROM robots WHERE personality = "anxious";
+2. SELECT * FROM robots WHERE personality = 'anxious';
 
-3. SELECT * FROM recipes WHERE "nut_free" = TRUE;
+3. SELECT name FROM recipes WHERE (nut_free = true);
 
-4. SELECT COUNT (gluten_free) FROM recipes != "vegetarian" = TRUE;
+4. SELECT name COUNT FROM recipes WHERE gluten_free = true AND vegetarian = true;
 
-5. SELECT * FROM animals WHERE "number_of_legs"(SELECTmax(int) FROM animals;
+5. SELECT name FROM animals WHERE number_of_legs=(select MAX(number_of_legs) FROM animals);
 
-6. SELECT * FROM board_games WHERE "mins_to_play"(SELECTmin(int) FROM board_games);
+6. SELECT * FROM board_games where  mins_to_play=(select MIN(mins_to_play) FROM board_games);
 
-7. SELECT * FROM recipes WHERE "minutes_required"(SELECTmax(int) FROM recipes);
+7. SELECT name FROM recipes WHERE minutes_required=(select MIN(minutes_required) FROM recipes)
 
-8. SELECT * FROM robots WHERE "name" CHARINDEX('M', 1);
+8. SELECT name FROM robots WHERE name like 'M%';
 
-9. SELECT COUNT (board_games) WHERE "max_players" <=8;
+9. SELECT name FROM board_games WHERE (max_players) <= 8;
 
-10. SELECT * FROM animals WHERE "swimming" AND "egg_laying" = TRUE;
+10. SELECT * FROM animals WHERE (swimming) AND (egg_laying) = true;
 
-11. SELECT * FROM animals WHERE "swimming" AND "egg_laying" = TRUE AND "flying" = FALSE;
+11. SELECT * FROM animals WHERE (swimming) AND (egg_laying) = true AND (flying) = false;
 
-12. SELECT * FROM board_games WHERE "max_players" (SELECTmax(int) FROM board_games);
-
-
+12. SELECT name FROM board_games WHERE max_players=(select MAX(max_players) FROM board_games);

@@ -1,0 +1,89 @@
+intro_to_sql=# SELECT * FROM robots WHERE source = 'Star Wars';
+ name |  source   | personality | id 
+------+-----------+-------------+----
+ C3PO | Star Wars | anxious     |  4
+ R2D2 | Star Wars | loyal       |  8
+(2 rows)
+
+intro_to_sql=# SELECT * FROM robots WHERE personality = 'anxious';
+ name |  source   | personality | id 
+------+-----------+-------------+----
+ C3PO | Star Wars | anxious     |  4
+(1 row)
+
+intro_to_sql=# SELECT name FROM recipes WHERE (nut_free = true);
+                   name                    
+-------------------------------------------
+ Butternut Squash Bake
+ Vegetarian Bibimbap
+ French Veggie Loaf
+ Quinoa and Black Beans
+ Juicy Roasted Chicken
+ Garlic Green Beans
+ Stout Slow Cooker Corned Beef and Veggies
+(7 rows)
+
+intro_to_sql=# SELECT name COUNT FROM recipes WHERE gluten_free = true AND vegetarian = true;
+            count             
+------------------------------
+ Vietnamese Rice-Noodle Salad
+ Quinoa and Black Beans
+ Garlic Green Beans
+(3 rows)
+
+intro_to_sql=# SELECT name FROM animals WHERE number_of_legs=(select MAX(number_of_legs) FROM animals);
+  name   
+---------
+ octopus
+(1 row)
+
+intro_to_sql=# SELECT * FROM board_games where  mins_to_play=(select MIN(mins_to_play) FROM board_games);
+   name   | max_players | min_players | category | mins_to_play | id 
+----------+-------------+-------------+----------+--------------+----
+ Sushi Go |           5 |           2 | party    |           15 | 10
+ Quixo    |           4 |           2 | abstract |           15 | 11
+(2 rows)
+
+intro_to_sql=# SELECT name FROM robots WHERE name like 'M%';
+      name      
+----------------
+ Marvin
+ Mr. Butlertron
+(2 rows)
+
+intro_to_sql=# SELECT name FROM board_games WHERE (max_players) <= 8;
+     name      
+---------------
+ Arkham Horror
+ Dixit
+ Carcassonne
+ Quarto
+ 7 Wonders
+ Agricola
+ Bohnanza
+ Sushi Go
+ Quixo
+ 7 Wonders
+(10 rows)
+
+intro_to_sql=# SELECT * FROM animals WHERE (swimming) AND (egg_laying) = true;
+  name   | number_of_legs | flying | swimming | egg_laying | id 
+---------+----------------+--------+----------+------------+----
+ octopus |              8 | f      | t        | t          |  3
+ duck    |              2 | t      | t        | t          |  4
+(2 rows)
+
+
+intro_to_sql=# SELECT * FROM animals WHERE (swimming) AND (egg_laying) = true AND (flying) = false;
+  name   | number_of_legs | flying | swimming | egg_laying | id 
+---------+----------------+--------+----------+------------+----
+ octopus |              8 | f      | t        | t          |  3
+(1 row)
+
+intro_to_sql=# SELECT name FROM board_games WHERE max_players=(select MAX(max_players) FROM board_games);
+          name          
+------------------------
+ Cards Against Humanity
+(1 row)
+
+
